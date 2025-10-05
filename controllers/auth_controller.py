@@ -1,3 +1,4 @@
+import os
 from flask import jsonify, request, make_response 
 from models import User
 from utils.generate_token import generate_token
