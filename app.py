@@ -31,6 +31,6 @@ if __name__ == '__main__':
         print(f"✗ MongoDB connection failed: {e}")
         print("Note: Make sure MongoDB is running on your system")
    
-    port = int(os.getenv("PORT", 8080))
+    port = int(os.getenv("PORT", 5000))
     print(f"🚀 Starting Flask app on port {port}  ❇️")
     app.run(host="0.0.0.0", debug=True, port=port)     
