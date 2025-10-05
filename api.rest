@@ -1,0 +1,163 @@
+### health check
+GET http://localhost:8080/tasks
+
+### Create task
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+    "title": "We should have a team meeting tomorrow",
+    "description": "We should have a team meeting tomorrow to discuss the project"
+}
+
+### Get task
+GET http://localhost:8080/tasks/68de652a57bd6d410506919a
+
+
+### Put task
+PUT http://localhost:8080/tasks/68de652a57bd6d410506919a
+Content-Type: application/json
+
+{
+    "priority": "high"
+}
+
+
+
+### Delete task
+DELETE http://localhost:8080/tasks/
+
+
+
+
+### auth routes
+
+### register
+POST http://localhost:9090/auth/register
+Content-Type: application/json
+
+{
+    "first_name": "Mouad",
+    "last_name": "Bounfil",
+    "email": "mouad@example.com",       
+    "password": "12345678"
+}
+
+### login
+POST http://localhost:9090/auth/login
+Content-Type: application/json
+
+{
+    "email": "mouad@example.com",
+    "password": "12345678"
+}
+
+
+### get all tasks
+GET https://tasks-management-ganai-production.up.railway.app/tasks
+Content-Type: application/json
+
+
+
+### web routes
+
+### login
+POST http://localhost:9090/
+Content-Type: application/json
+
+{
+    "email": "mouad@example.com",
+    "password": "12345678"
+}
+
+
+
+### register
+POST http://localhost:9090/auth/register
+Content-Type: application/json
+
+{
+    "username": "omaima_bounfil_123",
+    "name": "Omaima Bounfil",
+    "email": "omaima@example.com",       
+    "password": "12345678"
+}
+
+### logout
+POST http://localhost:9090/auth/login
+Content-Type: application/json
+
+{
+    "email": "omaima@example.com",
+    "password": "12345678"
+}
+
+
+### register
+POST https://tasks-management-ganai-production.up.railway.app/auth/login
+Content-Type: application/json
+
+{
+    "email": "mouad@example.com",
+    "password": "12345678"
+}
+
+
+### register
+POST https://tasks-management-ganai-production.up.railway.app/auth/register
+Content-Type: application/json
+
+{
+    "username": "MOUAD_BOUNFIL_123",
+    "name": "Mouad Bounfil",
+    "email": "mouad@example.com",       
+    "password": "12345678"
+}
+
+
+### get all tasks
+GET http://localhost:9090/tasks
+
+
+### create task
+POST http://localhost:9090/tasks
+Content-Type: application/json
+
+{
+    "title": "we should have a team meeting tomorrow",
+    "description": "we should have a team meeting tomorrow to discuss the project",
+    "user": "68dfb8b9284caa0b4353c25d"
+}
+
+### get task
+GET http://localhost:9090/tasks/68dfbf16479444f0cd3c720b
+
+### update task
+PUT http://localhost:9090/tasks/68dfbf16479444f0cd3c720b
+Content-Type: application/json
+
+{
+    "title": "we should have a team meeting tomorrow",
+    "description": "we should have a team meeting tomorrow to discuss the project"
+}
+
+### delete task
+DELETE http://localhost:9090/tasks/68dfbf16479444f0cd3c720b
+
+### login
+POST http://localhost:9090/auth/login
+Content-Type: application/json
+
+{
+    "email": "omaima@example.com",
+    "password": "12345678"
+}
+
+### get all tasks
+GET http://localhost:9090/tasks
+cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCXVCJ9.eyJ1c2VhdsqiuhuhidiuhqsdhuiyX2lkIjoiNjhkZmI4YjkyODRjYWEwYjQzNTNjMjVkIiwiZW1haWwiOiJvbWFpbWFAZXhhbXBsZS5jb20ifQ.C2XTAbE-8V-h2bAGtVS_NY9ie8RdnKWYwXDqUEByos
+
+
+### get current user
+GET http://localhost:9090/auth/me
+cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCXVCJ9.eyJ1c2VhdsqiuhuhidiuhqsdhuiyX2lkIjoiNjhkZmI4YjkyODRjYWEwYjQzNTNjMjVkIiwiZW1haWwiOiJvbWFpbWFAZXhhbXBsZS5jb20ifQ.C2XTAbE-8V-h2bAGtVS_NY9ie8RdnKWYwXDqUEByos
