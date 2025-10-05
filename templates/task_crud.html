@@ -6,6 +6,9 @@
     <title>Task Management - CRUD Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Base URL for API requests
+        const API_BASE_URL = window.location.protocol + '//' + window.location.host;
+        
         tailwind.config = {
             theme: {
                 extend: {
@@ -360,7 +363,9 @@
         // API Functions
         async function loadTasks() {
             try {
-                const response = await fetch('//' + window.location.host + '/tasks');
+                const response = await fetch(`${API_BASE_URL}/tasks`, {
+                    credentials: 'include'
+                });
                 const data = await response.json();
                 
                 if (response.ok) {
@@ -377,12 +382,13 @@
 
         async function createTask(taskData) {
             try {
-                const response = await fetch('//' + window.location.host + '/tasks', {
+                const response = await fetch(`${API_BASE_URL}/tasks`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(taskData)
+                    body: JSON.stringify(taskData),
+                    credentials: 'include'
                 });
 
                 const data = await response.json();
@@ -403,12 +409,13 @@
 
         async function updateTask(taskId, taskData) {
             try {
-                const response = await fetch('//' + window.location.host + `/tasks/${taskId}`, {
+                const response = await fetch(`${API_BASE_URL}/tasks/${taskId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(taskData)
+                    body: JSON.stringify(taskData),
+                    credentials: 'include'
                 });
 
                 const data = await response.json();
@@ -429,8 +436,9 @@
 
         async function deleteTask(taskId) {
             try {
-                const response = await fetch('//' + window.location.host + `/tasks/${taskId}`, {
-                    method: 'DELETE'
+                const response = await fetch(`${API_BASE_URL}/tasks/${taskId}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
                 });
 
                 if (response.ok) {

@@ -78,13 +78,14 @@ def login():
         }), 200)
         
         # Set JWT token in HTTP-only cookie
+        is_production = os.getenv('FLASK_ENV') == 'production'
         response.set_cookie(
             'token',
             token,
-            max_age=1000 * 60 * 60 * 24 * 30, # 30 days
+            max_age=1000 * 60 * 60 * 24 * 30,  # 30 days
             httponly=True,
-            secure=True,
-            samesite='Lax'
+            secure=is_production,  # Only send over HTTPS in production
+            samesite='Lax' if is_production else None
         )
         
         return response
