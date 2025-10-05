@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, request, redirect, url_for, jsonify
+from werkzeug.middleware.proxy_fix import ProxyFix
+from flask_cors import CORS
 from routes.auth_routes import auth_bp
 from routes.tasks_routes import tasks_bp
 from routes.web_routes import web_bp
@@ -10,6 +12,24 @@ import os
 load_dotenv()   
 
 app = Flask(__name__)
+
+# Configure CORS
+CORS(app, resources={
+    r"/*": {
+        "origins": ["https://taskmanagement-production-a8c9.up.railway.app", "http://localhost:*"],
+        "supports_credentials": True
+    }
+})
+
+# This is needed for handling HTTPS in production
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
+# Ensure all routes use HTTPS in production
+@app.before_request
+def enforce_https():
+    if request.headers.get('X-Forwarded-Proto') == 'http' and os.getenv('FLASK_ENV') == 'production':
+        url = request.url.replace('http://', 'https://', 1)
+        return redirect(url, code=301)
 
 # Register blueprints
 app.register_blueprint(web_bp)  # Web routes (no prefix for root routes)
