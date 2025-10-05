@@ -360,7 +360,7 @@
         // API Functions
         async function loadTasks() {
             try {
-                const response = await fetch('/tasks');
+                const response = await fetch('//' + window.location.host + '/tasks');
                 const data = await response.json();
                 
                 if (response.ok) {
@@ -377,7 +377,7 @@
 
         async function createTask(taskData) {
             try {
-                const response = await fetch('/tasks', {
+                const response = await fetch('//' + window.location.host + '/tasks', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -403,7 +403,7 @@
 
         async function updateTask(taskId, taskData) {
             try {
-                const response = await fetch(`/tasks/${taskId}`, {
+                const response = await fetch('//' + window.location.host + `/tasks/${taskId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -429,7 +429,7 @@
 
         async function deleteTask(taskId) {
             try {
-                const response = await fetch(`/tasks/${taskId}`, {
+                const response = await fetch('//' + window.location.host + `/tasks/${taskId}`, {
                     method: 'DELETE'
                 });
 
